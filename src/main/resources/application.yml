@@ -1,0 +1,61 @@
+server:
+  port: 8800
+  undertow:
+    threads:
+      io: 16
+      worker: 512
+    buffer-size: 16364
+    direct-buffers: true
+
+spring:
+  application:
+    name: reggie_take_out
+  datasource:
+    dynamic:
+      primary: master
+      datasource:
+        master:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/wentnetdb?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+          username: root
+          password: 123456
+  mvc:
+    format:
+      date: yyyy-MM-dd HH:mm:ss
+  jackson:
+    default-property-inclusion: non_null
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  # \u542F\u7528http\u4E0A\u4F20\u5904\u7406
+  servlet:
+    multipart:
+      enabled: true
+      # \u8BBE\u7F6E\u5355\u4E2A\u6587\u4EF6\u7684\u6700\u5927\u957F\u5EA6
+      max-file-size: 50MB
+      # \u8BBE\u7F6E\u6700\u5927\u7684\u8BF7\u6C42\u6587\u4EF6\u7684\u5927\u5C0F
+      max-request-size: 50MB
+      file-size-threshold: 1MB
+
+knife4j:
+  enable: true
+  # \u5F00\u542FSwagger\u7684Basic\u8BA4\u8BC1\u529F\u80FD,\u9ED8\u8BA4\u662Ffalse
+  basic:
+    enable: false
+    # Basic\u8BA4\u8BC1\u7528\u6237\u540D
+    username: hxgis
+    # Basic\u8BA4\u8BC1\u5BC6\u7801
+    password: hxgis12345
+  setting:
+    enableDynamicParameter: true
+    enableHost: true
+
+mybatis-plus:
+  mapper-locations: classpath*:com/wentnet/dao/*/mapper/xml/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    local-cache-scope: STATEMENT
+    cache-enabled: false
+  global-config:
+    db-config:
+      id-type: INPUT
+  type-handlers-package: com.hxgis.dao.type
