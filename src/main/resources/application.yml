@@ -57,5 +57,5 @@ mybatis-plus:
     cache-enabled: false
   global-config:
     db-config:
-      id-type: INPUT
-  type-handlers-package: com.hxgis.dao.type
+      id-type: ASSIGN_ID
+  type-handlers-package: com.wentnet.dao.type
