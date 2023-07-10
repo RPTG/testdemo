@@ -14,7 +14,7 @@
     <name>wentnet</name>
     <description>wentnet</description>
     <properties>
-        <java.version>17</java.version>
+        <java.version>1.8</java.version>
     </properties>
     <dependencies>
         <!-- spring-boot -->
